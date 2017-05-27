@@ -5,7 +5,6 @@
  */
 package tetris.binarytetris.logic;
 
-
 /**
  *
  * @author Venla Viljamaa
@@ -23,6 +22,10 @@ public class PalikkaTaulukko {
         }
     }
 
+    public Palikka getPalikka(int y, int x) {
+        return taulukko[y][x];
+    }
+
     public void poista(int y, int x) {
         taulukko[y][x].setArvo(0);
     }
@@ -30,7 +33,6 @@ public class PalikkaTaulukko {
     public void lisaa(int arvo, int y, int x) {
         taulukko[y][x].setArvo(arvo);
     }
-    
 
     //tulosta-metodi testailua varten, ei tarvita enää valmiissa ohjelmassa
     public void tulosta() {

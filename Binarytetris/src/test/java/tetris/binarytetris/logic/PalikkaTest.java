@@ -42,6 +42,10 @@ public class PalikkaTest {
     }
 
     @Test
+    public void hello() {
+    }
+
+    @Test
     public void palikanArvoLuotaessaOnNolla() {
         assertEquals(0, palikka.getArvo());
     }

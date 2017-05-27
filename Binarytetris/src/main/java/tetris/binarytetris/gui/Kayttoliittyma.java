@@ -10,5 +10,4 @@ package tetris.binarytetris.gui;
  * @author Venla Viljamaa
  */
 public class Kayttoliittyma {
-    
 }
