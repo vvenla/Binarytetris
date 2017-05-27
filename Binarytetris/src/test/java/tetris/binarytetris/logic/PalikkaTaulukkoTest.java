@@ -1,4 +1,4 @@
-package tetris.binarytetris;
+package tetris.binarytetris.logic;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,9 +17,9 @@ import static org.junit.Assert.*;
  *
  * @author Venla Viljamaa
  */
-public class BinarytetrisTest {
+public class PalikkaTaulukkoTest {
     
-    public BinarytetrisTest() {
+    public PalikkaTaulukkoTest() {
     }
     
     @BeforeClass
@@ -41,12 +41,6 @@ public class BinarytetrisTest {
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
-     @Test
-     public void hello() {}
-     
-     @Test
-     public void palikallaOnArvo() {
-         Palikka palikka = new Palikka(10);
-         assertEquals(10, palikka.getArvo());
-     }
+    // @Test
+    // public void hello() {}
 }

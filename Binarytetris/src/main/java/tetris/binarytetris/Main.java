@@ -5,6 +5,9 @@
  */
 package tetris.binarytetris;
 
+import tetris.binarytetris.logic.PalikkaTaulukko;
+import tetris.binarytetris.logic.Palikka;
+
 /**
  *
  * @author Venla Viljamaa
@@ -15,7 +18,23 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        PalikkaTaulukko taulukko = new PalikkaTaulukko(10, 5);
+        
+        taulukko.tulosta();
+        System.out.println();
+        
+        Palikka palikka = new Palikka(0b0110);
+        
+        taulukko.lisaa(3, 0, 0);
+        taulukko.lisaa(4, 0, 4);
+        taulukko.lisaa(5, 9, 0);
+        
+        taulukko.tulosta();
+        System.out.println();
+        
+        taulukko.poista(0, 4);
+        
+        taulukko.tulosta();
     }
     
 }
