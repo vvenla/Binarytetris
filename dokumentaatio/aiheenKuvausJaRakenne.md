@@ -11,4 +11,5 @@
 - pisteet
 #### Mahdollisia muita toimintoja:
 - vaikeustason kasvaminen
+![](BinarypelinKaavio.jpg)
  

@@ -7,8 +7,6 @@ package tetris.binarytetris;
 
 import java.util.Scanner;
 import tetris.binarytetris.gui.Tekstikayttis;
-import tetris.binarytetris.logic.PalikkaTaulukko;
-import tetris.binarytetris.logic.Palikka;
 
 /**
  *
@@ -20,8 +18,11 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        int korkeus = 10;
+        int leveys = 5;
+        int haluttuSumma = 15;
         Scanner lukija = new Scanner(System.in);
-        Tekstikayttis kayttis = new Tekstikayttis(10, 5, lukija, 15);
+        Tekstikayttis kayttis = new Tekstikayttis(korkeus, leveys, lukija, haluttuSumma);
         kayttis.pelaa();
     }
 

@@ -11,9 +11,9 @@ package tetris.binarytetris.logic;
  */
 public class PalikkaTaulukko {
 
-    private Palikka[][] taulukko;
-    private int korkeus;
-    private int leveys;
+    private final Palikka[][] taulukko;
+    private final int korkeus;
+    private final int leveys;
 
     public PalikkaTaulukko(int korkeus, int leveys) {
         this.taulukko = new Palikka[korkeus][leveys];

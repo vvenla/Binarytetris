@@ -13,12 +13,12 @@ import java.util.Random;
  */
 public class TetrisPeli {
 
-    private PalikkaTaulukko taulukko;
-    private int korkeus;
-    private int leveys;
-    private boolean liikkuuko;
+    private final PalikkaTaulukko taulukko;
+    private final int korkeus;
+    private final int leveys;
+    private final boolean liikkuuko;
     private int uusiArvo;
-    private int haluttuSumma;
+    private final int haluttuSumma;
 
     public TetrisPeli(int korkeus, int leveys, int haluttuSumma) {
         this.korkeus = korkeus;
@@ -36,7 +36,7 @@ public class TetrisPeli {
     public void setUusiArvo() {
         this.uusiArvo = new Random().nextInt(haluttuSumma / 2) + 1;
     }
-    
+
     public int getUusiArvo() {
         return this.uusiArvo;
     }
@@ -55,13 +55,13 @@ public class TetrisPeli {
             }
         }
     }
-    
+
     public void liikuAlasKaanteinen() {
-        for (int y = korkeus -1; y >= 0; y--) {
+        for (int y = korkeus - 1; y >= 0; y--) {
             for (int x = 0; x < leveys; x++) {
                 taulukko.siirraAlas(y, x);
             }
         }
     }
-    
+
 }

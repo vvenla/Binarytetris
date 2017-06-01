@@ -5,7 +5,6 @@
  */
 package tetris.binarytetris.gui;
 
-import java.util.Random;
 import java.util.Scanner;
 import tetris.binarytetris.logic.PalikkaTaulukko;
 import tetris.binarytetris.logic.TetrisPeli;
@@ -16,11 +15,11 @@ import tetris.binarytetris.logic.TetrisPeli;
  */
 public class Tekstikayttis {
 
-    private TetrisPeli peli;
-    private PalikkaTaulukko taulukko;
-    private Scanner lukija;
-    private int summa;
-    private int leveys;
+    private final TetrisPeli peli;
+    private final PalikkaTaulukko taulukko;
+    private final Scanner lukija;
+    private final int summa;
+    private final int leveys;
 
     public Tekstikayttis(int korkeus, int leveys, Scanner lukija, int summa) {
         this.peli = new TetrisPeli(korkeus, leveys, summa);
@@ -45,7 +44,7 @@ public class Tekstikayttis {
     public void paivitaPeli() {
         System.out.print("Anna sarake: ");
         String komento = lukija.nextLine();
-        
+
         if (!komento.matches("[1-" + leveys + "]")) {
             System.out.println("Väärä komento");
         } else {

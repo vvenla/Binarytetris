@@ -13,8 +13,8 @@
 <a class="jxr_linenumber" name="L5" href="#L5">5</a>   <em class="jxr_comment"> */</em>
 <a class="jxr_linenumber" name="L6" href="#L6">6</a>   <strong class="jxr_keyword">package</strong> tetris.binarytetris;
 <a class="jxr_linenumber" name="L7" href="#L7">7</a>   
-<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <strong class="jxr_keyword">import</strong> tetris.binarytetris.logic.PalikkaTaulukko;
-<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <strong class="jxr_keyword">import</strong> tetris.binarytetris.logic.Palikka;
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <strong class="jxr_keyword">import</strong> java.util.Scanner;
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <strong class="jxr_keyword">import</strong> tetris.binarytetris.gui.Tekstikayttis;
 <a class="jxr_linenumber" name="L10" href="#L10">10</a>  
 <a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_javadoccomment"> *</em>
@@ -26,25 +26,15 @@
 <a class="jxr_linenumber" name="L18" href="#L18">18</a>  <em class="jxr_javadoccomment">     * @param args the command line arguments</em>
 <a class="jxr_linenumber" name="L19" href="#L19">19</a>  <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="L20" href="#L20">20</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> main(String[] args) {
-<a class="jxr_linenumber" name="L21" href="#L21">21</a>          <a href="../../tetris/binarytetris/logic/PalikkaTaulukko.html">PalikkaTaulukko</a> taulukko = <strong class="jxr_keyword">new</strong> <a href="../../tetris/binarytetris/logic/PalikkaTaulukko.html">PalikkaTaulukko</a>(10, 5);
-<a class="jxr_linenumber" name="L22" href="#L22">22</a>  
-<a class="jxr_linenumber" name="L23" href="#L23">23</a>          taulukko.tulosta();
-<a class="jxr_linenumber" name="L24" href="#L24">24</a>          System.out.println();
-<a class="jxr_linenumber" name="L25" href="#L25">25</a>  
-<a class="jxr_linenumber" name="L26" href="#L26">26</a>          <a href="../../tetris/binarytetris/logic/Palikka.html">Palikka</a> palikka = <strong class="jxr_keyword">new</strong> <a href="../../tetris/binarytetris/logic/Palikka.html">Palikka</a>(0b0110);
-<a class="jxr_linenumber" name="L27" href="#L27">27</a>          taulukko.lisaa(3, 0, 0);
-<a class="jxr_linenumber" name="L28" href="#L28">28</a>          taulukko.lisaa(4, 0, 4);
-<a class="jxr_linenumber" name="L29" href="#L29">29</a>          taulukko.lisaa(5, 9, 0);
-<a class="jxr_linenumber" name="L30" href="#L30">30</a>  
-<a class="jxr_linenumber" name="L31" href="#L31">31</a>          taulukko.tulosta();
-<a class="jxr_linenumber" name="L32" href="#L32">32</a>          System.out.println();
-<a class="jxr_linenumber" name="L33" href="#L33">33</a>  
-<a class="jxr_linenumber" name="L34" href="#L34">34</a>          taulukko.poista(0, 4);
-<a class="jxr_linenumber" name="L35" href="#L35">35</a>  
-<a class="jxr_linenumber" name="L36" href="#L36">36</a>          taulukko.tulosta();
-<a class="jxr_linenumber" name="L37" href="#L37">37</a>      }
-<a class="jxr_linenumber" name="L38" href="#L38">38</a>  
-<a class="jxr_linenumber" name="L39" href="#L39">39</a>  }
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>          <strong class="jxr_keyword">int</strong> korkeus = 10;
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>          <strong class="jxr_keyword">int</strong> leveys = 5;
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>          <strong class="jxr_keyword">int</strong> haluttuSumma = 15;
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>          Scanner lukija = <strong class="jxr_keyword">new</strong> Scanner(System.in);
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>          <a href="../../tetris/binarytetris/gui/Tekstikayttis.html">Tekstikayttis</a> kayttis = <strong class="jxr_keyword">new</strong> <a href="../../tetris/binarytetris/gui/Tekstikayttis.html">Tekstikayttis</a>(korkeus, leveys, lukija, haluttuSumma);
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>          kayttis.pelaa();
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>      }
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>  
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>  }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2017. All rights reserved.</div>

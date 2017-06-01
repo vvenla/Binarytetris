@@ -25,8 +25,8 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2017</copyright>
     <item>
-      <title>File: 4,
-             Errors: 45,
+      <title>File: 6,
+             Errors: 0,
              Warnings: 0,
              Infos: 0
       </title>
@@ -55,7 +55,21 @@ under the License.
                   0
                 </td>
                 <td>
-                  1
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#tetris.binarytetris.gui.Tekstikayttis.java">tetris/binarytetris/gui/Tekstikayttis.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
                 </td>
               </tr>
                           <tr>
@@ -69,7 +83,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  19
+                  0
                 </td>
               </tr>
                           <tr>
@@ -83,7 +97,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  13
+                  0
                 </td>
               </tr>
                           <tr>
@@ -97,7 +111,21 @@ under the License.
                   0
                 </td>
                 <td>
-                  12
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#tetris.binarytetris.logic.TetrisPeli.java">tetris/binarytetris/logic/TetrisPeli.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
                 </td>
               </tr>
                       </tbody>
