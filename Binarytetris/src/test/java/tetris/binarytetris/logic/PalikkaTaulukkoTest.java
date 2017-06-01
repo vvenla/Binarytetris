@@ -52,28 +52,48 @@ public class PalikkaTaulukkoTest {
             }
         }
     }
+    
+    @Test
+    public void getKorkeusToimii() {
+        assertEquals(10, taulukko.getKorkeus());
+    }
+    
+    @Test
+    public void getLeveysToimii() {
+        assertEquals(5, taulukko.getLeveys());
+    }
 
     @Test
-    public void lisaaminenToimii() {
-        taulukko.lisaa(3, 0, 0);
+    public void setPalikkaToimii() {
+        taulukko.setPalikka(3, 0, 0);
         assertEquals(3, taulukko.getPalikka(0, 0).getArvo());
     }
 
     @Test
-    public void lisaaminenToimii2() {
-        taulukko.lisaa(5, 0, 4);
-        taulukko.lisaa(2, 9, 0);
+    public void setPalikkaToimii2() {
+        taulukko.setPalikka(5, 0, 4);
+        taulukko.setPalikka(2, 9, 0);
         assertEquals(5, taulukko.getPalikka(0, 4).getArvo());
         assertEquals(2, taulukko.getPalikka(9, 0).getArvo());
     }
 
     @Test
-    public void poistaminenToimii() {
-        taulukko.lisaa(3, 0, 0);
-        taulukko.lisaa(2, 9, 0);
-        taulukko.poista(0, 0);
+    public void siirraAlasToimii() {
+        taulukko.setPalikka(3, 0, 0);
+        taulukko.siirraAlas(0, 0);
+        assertEquals(3, taulukko.getPalikka(1, 0).getArvo());
         assertEquals(0, taulukko.getPalikka(0, 0).getArvo());
-        assertEquals(2, taulukko.getPalikka(9, 0).getArvo());
+    }
+    
+    @Test
+    public void vaakaSummanTarkistusToimii() {
+        taulukko.setPalikka(3, 0, 0);
+        taulukko.setPalikka(3, 0, 1);
+        taulukko.setPalikka(3, 0, 2);
+        taulukko.loytyykoTaulukostaSummaa(9);
+        assertEquals(0, taulukko.getPalikka(0, 0).getArvo());
+        assertEquals(0, taulukko.getPalikka(0, 1).getArvo());
+        assertEquals(0, taulukko.getPalikka(0, 2).getArvo());
     }
 
 }
