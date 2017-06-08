@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tetris.binarytetris.gui;
 
 import java.util.Scanner;
@@ -18,27 +13,24 @@ public class Tekstikayttis {
     private final TetrisPeli peli;
     private final PalikkaTaulukko taulukko;
     private final Scanner lukija;
-    private final int summa;
+//    private final int summa;
     private final int leveys;
 
     public Tekstikayttis(int korkeus, int leveys, Scanner lukija, int summa) {
         this.peli = new TetrisPeli(korkeus, leveys, summa);
         this.taulukko = peli.getTaulukko();
         this.lukija = lukija;
-        this.summa = summa;
+//        this.summa = summa;
         this.leveys = leveys;
     }
 
     public void pelaa() {
-        while (true) {
-//            if () {
-//                break;
-//            }
+        while (peli.onkoTaulukossaTilaa()) {
             peli.setUusiArvo();
             System.out.println("Seuraava palikka: " + peli.getUusiArvo());
             paivitaPeli();
         }
-
+        System.out.println("Peli loppui");
     }
 
     public void paivitaPeli() {

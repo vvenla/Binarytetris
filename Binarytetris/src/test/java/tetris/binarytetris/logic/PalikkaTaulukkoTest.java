@@ -52,12 +52,12 @@ public class PalikkaTaulukkoTest {
             }
         }
     }
-    
+
     @Test
     public void getKorkeusToimii() {
         assertEquals(10, taulukko.getKorkeus());
     }
-    
+
     @Test
     public void getLeveysToimii() {
         assertEquals(5, taulukko.getLeveys());
@@ -84,16 +84,27 @@ public class PalikkaTaulukkoTest {
         assertEquals(3, taulukko.getPalikka(1, 0).getArvo());
         assertEquals(0, taulukko.getPalikka(0, 0).getArvo());
     }
-    
+
     @Test
     public void vaakaSummanTarkistusToimii() {
         taulukko.setPalikka(3, 0, 0);
         taulukko.setPalikka(3, 0, 1);
         taulukko.setPalikka(3, 0, 2);
-        taulukko.loytyykoTaulukostaSummaa(9);
+        taulukko.tarkistaVaakaSumma(0, 0, 9);
         assertEquals(0, taulukko.getPalikka(0, 0).getArvo());
         assertEquals(0, taulukko.getPalikka(0, 1).getArvo());
         assertEquals(0, taulukko.getPalikka(0, 2).getArvo());
+    }
+
+    @Test
+    public void pystySummanTarkistusToimii() {
+        taulukko.setPalikka(3, 9, 0);
+        taulukko.setPalikka(3, 8, 0);
+        taulukko.setPalikka(3, 7, 0);
+        taulukko.tarkistaPystySumma(7, 0, 9);
+        assertEquals(0, taulukko.getPalikka(9, 0).getArvo());
+        assertEquals(0, taulukko.getPalikka(8, 0).getArvo());
+        assertEquals(0, taulukko.getPalikka(7, 0).getArvo());
     }
 
 }
