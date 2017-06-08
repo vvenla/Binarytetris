@@ -4,13 +4,14 @@
 - palikan pudotuspaikan valinta
 #### Pelinäkymä:
 - seuraavana vuorossa oleva palikka
-- pudotettava palikka
+- sarakkeiden valinta
 - pelialue
 	* pudotetut palikat
 - jäljellä oleva aika
 - pisteet
 #### Mahdollisia muita toimintoja:
 - vaikeustason kasvaminen
+- mahdollisuus valita mitä summaa tavoitellaan
 
 ----
 
