@@ -6,7 +6,7 @@
 - seuraavana vuorossa oleva palikka
 - pudotettava palikka
 - pelialue
-	*pudotetut palikat
+	* pudotetut palikat
 - jäljellä oleva aika
 - pisteet
 #### Mahdollisia muita toimintoja:
