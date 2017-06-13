@@ -80,8 +80,10 @@ public class PalikkaTaulukko {
      * @param y Palikan y-koordinaatti
      * @param x Palikan x-koordinaatti
      * @param haluttuSumma Tarkistettava summa
+     *
+     * @return true jos löytyy vaakasumma, muuten false.
      */
-    public void tarkistaVaakaSumma(int y, int x, int haluttuSumma) {
+    public boolean tarkistaVaakaSumma(int y, int x, int haluttuSumma) {
         int tarkistettava = 0;
         int vierekkaistenSumma = 0;
         while (tarkistettava < leveys - x && taulukko[y][x + tarkistettava].getArvo() != 0) {
@@ -90,9 +92,11 @@ public class PalikkaTaulukko {
                 for (int i = 0; i <= tarkistettava; i++) {
                     taulukko[y][x + i].setArvo(0);
                 }
+                return true;
             }
             tarkistettava++;
         }
+        return false;
     }
 
     /**
@@ -102,19 +106,23 @@ public class PalikkaTaulukko {
      * @param y Palikan y-koordinaatti
      * @param x Palikan x-koordinaatti
      * @param haluttuSumma Tarkistettava summa
+     *
+     * @return true jos summa löytyy, muuten false.
      */
-    public void tarkistaPystySumma(int y, int x, int haluttuSumma) {
+    public boolean tarkistaPystySumma(int y, int x, int haluttuSumma) {
         int tarkistettava = 0;
         int vierekkaistenSumma = 0;
         while (tarkistettava < korkeus - y && taulukko[y + tarkistettava][x].getArvo() != 0) {
             vierekkaistenSumma += taulukko[y + tarkistettava][x].getArvo();
             if (vierekkaistenSumma == haluttuSumma) {
                 for (int i = 0; i <= tarkistettava; i++) {
-                    taulukko[y + i][x].setArvo(0);
+                    taulukko[y + i][x].setArvo(0);                    
                 }
+                return true;
             }
             tarkistettava++;
         }
+        return false;
     }
 
 //    public void siirraOikealle(int y, int x) {

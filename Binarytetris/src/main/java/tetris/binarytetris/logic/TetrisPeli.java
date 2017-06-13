@@ -12,7 +12,8 @@ public class TetrisPeli {
     private final int korkeus;
     private final int leveys;
     private int uusiArvo;
-    private final int haluttuSumma;
+    private int haluttuSumma;
+    private int pisteet;
 
     public TetrisPeli(int korkeus, int leveys, int haluttuSumma) {
         this.korkeus = korkeus;
@@ -20,6 +21,7 @@ public class TetrisPeli {
         this.taulukko = new PalikkaTaulukko(korkeus, leveys);
         this.uusiArvo = 0;
         this.haluttuSumma = haluttuSumma;
+        this.pisteet = 0;
     }
 
     public PalikkaTaulukko getTaulukko() {
@@ -36,6 +38,14 @@ public class TetrisPeli {
 
     public int getUusiArvo() {
         return this.uusiArvo;
+    }
+
+    public int getPisteet() {
+        return this.pisteet;
+    }
+
+    public int getHaluttuSumma() {
+        return this.haluttuSumma;
     }
 
     /**
@@ -56,12 +66,15 @@ public class TetrisPeli {
             if (liikuAlas() == false) {
                 break;
             }
-            liikuAlas();
+            
             tarkistaSummat();
+            liikuAlas();
+            nostaVaikeustasoa();
 //            liikuAlasKaanteinen();
         }
 
         onkoTaulukossaTilaa();
+
     }
 
     /**
@@ -114,13 +127,34 @@ public class TetrisPeli {
      * int, int)
      * @see tetris.binarytetris.logic.PalikkaTaulukko#tarkistaPystySumma(int,
      * int, int)
+     *
+     * @return true jos löytyi summa/summia, muuten false.
      */
-    public void tarkistaSummat() {
+    public boolean tarkistaSummat() {
         for (int y = korkeus - 1; y >= 0; y--) {
             for (int x = leveys - 1; x >= 0; x--) {
-                taulukko.tarkistaVaakaSumma(y, x, haluttuSumma);
-                taulukko.tarkistaPystySumma(y, x, haluttuSumma);
+                if (taulukko.tarkistaVaakaSumma(y, x, haluttuSumma)) {
+                    pisteet++;
+                    return true;
+                }
+                if (taulukko.tarkistaPystySumma(y, x, haluttuSumma)) {
+                    pisteet++;
+                    return true;
+                }
             }
+        }
+        return false;
+    }
+
+    public void nostaVaikeustasoa() {
+        if (this.pisteet == 10) {
+            for (int y = 0; y < korkeus; y++) {
+                for (int x = 0; x < leveys; x++) {
+                    taulukko.getPalikka(y, x).setArvo(0);
+                    this.pisteet = 0;
+                }
+            }
+            this.haluttuSumma += 1;
         }
     }
 
