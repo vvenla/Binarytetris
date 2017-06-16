@@ -16,3 +16,5 @@ Päivä | Tunnit | Kuvaus
 06.06.2017 | 3h | Käyttöliittymää, JavaDoc
 07.06.2017 | 3h | Käyttöliittymää
 08.06.2017 | 3h | Palautuksen säätämistä
+12.06.2017 | 3h | Käyttöliittymää
+13.06.2017 | 3h | Käyttöliittymää
