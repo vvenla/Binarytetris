@@ -83,6 +83,7 @@ public class PalikkaTaulukkoTest {
         taulukko.siirraAlas(0, 0);
         assertEquals(3, taulukko.getPalikka(1, 0).getArvo());
         assertEquals(0, taulukko.getPalikka(0, 0).getArvo());
+        assertTrue(true);
     }
 
     @Test
@@ -94,6 +95,7 @@ public class PalikkaTaulukkoTest {
         assertEquals(0, taulukko.getPalikka(0, 0).getArvo());
         assertEquals(0, taulukko.getPalikka(0, 1).getArvo());
         assertEquals(0, taulukko.getPalikka(0, 2).getArvo());
+        assertTrue(true);
     }
 
     @Test
@@ -105,6 +107,7 @@ public class PalikkaTaulukkoTest {
         assertEquals(0, taulukko.getPalikka(9, 0).getArvo());
         assertEquals(0, taulukko.getPalikka(8, 0).getArvo());
         assertEquals(0, taulukko.getPalikka(7, 0).getArvo());
+        assertTrue(true);
     }
 
 }

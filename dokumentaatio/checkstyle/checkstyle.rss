@@ -26,7 +26,7 @@ under the License.
     <copyright>&#169;2017</copyright>
     <item>
       <title>File: 5,
-             Errors: 0,
+             Errors: 18,
              Warnings: 0,
              Infos: 0
       </title>
@@ -46,7 +46,7 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#tetris.binarytetris.gui.Kayttoliittyma.java">tetris/binarytetris/gui/Kayttoliittyma.java</a>
+                  <a href="${project.url}/checkstyle.html#tetris.binarytetris.ui.Kayttoliittyma.java">tetris/binarytetris/ui/Kayttoliittyma.java</a>
                 </td>
                 <td>
                   0
@@ -55,12 +55,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  0
+                  4
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#tetris.binarytetris.gui.Tekstikayttis.java">tetris/binarytetris/gui/Tekstikayttis.java</a>
+                  <a href="${project.url}/checkstyle.html#tetris.binarytetris.ui.Tekstikayttis.java">tetris/binarytetris/ui/Tekstikayttis.java</a>
                 </td>
                 <td>
                   0
@@ -69,7 +69,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  0
+                  5
                 </td>
               </tr>
                           <tr>
@@ -83,7 +83,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  0
+                  2
                 </td>
               </tr>
                           <tr>
@@ -97,7 +97,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  0
+                  3
                 </td>
               </tr>
                           <tr>
@@ -111,7 +111,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  0
+                  4
                 </td>
               </tr>
                       </tbody>

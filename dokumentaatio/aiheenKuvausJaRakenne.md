@@ -16,4 +16,5 @@
 ----
 
 ![](BinarypelinKaavio.jpg)
+![](sekvenssikaavio.jpg)
  

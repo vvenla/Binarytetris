@@ -93,20 +93,21 @@ public class TetrisPeliTest {
         assertFalse(peli.onkoTaulukossaTilaa());
     }
 
-//    @Test
-//    public void testTarkistaSummat() {
-//        peli.getTaulukko().setPalikka(5, 9, 0);
-//        peli.getTaulukko().setPalikka(5, 8, 0);
-//        peli.getTaulukko().setPalikka(5, 7, 0);
+    @Test
+    public void testTarkistaSummat() {
+        peli.getTaulukko().setPalikka(5, 9, 0);
+        peli.getTaulukko().setPalikka(5, 8, 0);
+        peli.getTaulukko().setPalikka(5, 7, 0);
 //        peli.getTaulukko().setPalikka(5, 9, 2);
 //        peli.getTaulukko().setPalikka(5, 9, 3);
 //        peli.getTaulukko().setPalikka(5, 9, 4);
-//        peli.tarkistaSummat();
-//        for (int y = 0; y < 10; y++) {
-//            for (int x = 0; x < 5; x++) {
-//                assertEquals(0, peli.getTaulukko().getPalikka(y, x).getArvo());
-//            }
-//        }
-//    }
+        peli.tarkistaSummat();
+        assertTrue(true);
+        for (int y = 0; y < 10; y++) {
+            for (int x = 0; x < 5; x++) {
+                assertEquals(0, peli.getTaulukko().getPalikka(y, x).getArvo());
+            }
+        }
+    }
 
 }

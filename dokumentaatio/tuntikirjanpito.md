@@ -18,3 +18,8 @@ Päivä | Tunnit | Kuvaus
 08.06.2017 | 3h | Palautuksen säätämistä
 12.06.2017 | 3h | Käyttöliittymää
 13.06.2017 | 3h | Käyttöliittymää
+15.06.2017 | 1h | Raportointia
+17.06.2017 | 1h | Koodikatselmointi
+18.06.2017 | 3h | Käyttöliittymää
+20.06.2017 | 3h | Käyttöliittymää
+21.06.2017 | 4h | Käyttöliittymää

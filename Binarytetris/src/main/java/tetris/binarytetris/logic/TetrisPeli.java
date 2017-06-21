@@ -9,15 +9,11 @@ import java.util.Random;
 public class TetrisPeli {
 
     private final PalikkaTaulukko taulukko;
-    private final int korkeus;
-    private final int leveys;
     private int uusiArvo;
     private int haluttuSumma;
     private int pisteet;
 
     public TetrisPeli(int korkeus, int leveys, int haluttuSumma) {
-        this.korkeus = korkeus;
-        this.leveys = leveys;
         this.taulukko = new PalikkaTaulukko(korkeus, leveys);
         this.uusiArvo = 0;
         this.haluttuSumma = haluttuSumma;
@@ -56,24 +52,19 @@ public class TetrisPeli {
      *
      * @see tetris.binarytetris.logic.TetrisPeli#liikuAlas()
      * @see tetris.binarytetris.logic.TetrisPeli#tarkistaSummat()
-     * @see tetris.binarytetris.logic.TetrisPeli#onkoTaulukossaTilaa()
+     * @see tetris.binarytetris.logic.TetrisPeli#nostaVaikeustasoa()
      */
     public void paivita(int sarake) {
         if (taulukko.getPalikka(0, sarake - 1).getArvo() == 0) {
             taulukko.setPalikka(uusiArvo, 0, sarake - 1);
         }
         while (true) {
+            tarkistaSummat();
             if (liikuAlas() == false) {
                 break;
             }
-            
-            tarkistaSummat();
-            liikuAlas();
-            nostaVaikeustasoa();
-//            liikuAlasKaanteinen();
         }
-
-        onkoTaulukossaTilaa();
+        nostaVaikeustasoa();
 
     }
 
@@ -82,12 +73,13 @@ public class TetrisPeli {
      * olevan palikan arvo on nolla.
      *
      * @see tetris.binarytetris.logic.PalikkaTaulukko#siirraAlas(int, int)
+     *
      * @return true jos joku taulukon alkioista liikkuu alas, muuten false.
      */
     public boolean liikuAlas() {
         boolean liikkuuko = false;
-        for (int y = 0; y < korkeus; y++) {
-            for (int x = 0; x < leveys; x++) {
+        for (int y = 0; y < taulukko.getKorkeus(); y++) {
+            for (int x = 0; x < taulukko.getLeveys(); x++) {
                 if (taulukko.siirraAlas(y, x)) {
                     liikkuuko = true;
                 }
@@ -96,27 +88,19 @@ public class TetrisPeli {
         return liikkuuko;
     }
 
-//    public void liikuAlasKaanteinen() {
-//        for (int y = korkeus - 1; y >= 0; y--) {
-//            for (int x = 0; x < leveys; x++) {
-//                taulukko.siirraAlas(y, x);
-//            }
-//        }
-//    }
     /**
-     * Metodi tarkistaa, onko taulukon ylimmällä rivillä palikoita, joden arvo
-     * on nolla.
+     * Metodi tarkistaa, osuuko taulukon yläreunaan nollasta poikkeavia
+     * palikoita.
      *
-     * @return true, jos ylimmällä rivillä on vähintään yksi nolla, muuten
-     * false.
+     * @return true, jos yläreunaan osuu palikka, muuten false.
      */
     public boolean onkoTaulukossaTilaa() {
-        for (int x = 0; x < leveys; x++) {
-            if (taulukko.getPalikka(0, x).getArvo() == 0) {
-                return true;
+        for (int x = 0; x < taulukko.getLeveys(); x++) {
+            if (taulukko.getPalikka(0, x).getArvo() != 0) {
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
     /**
@@ -131,8 +115,8 @@ public class TetrisPeli {
      * @return true jos löytyi summa/summia, muuten false.
      */
     public boolean tarkistaSummat() {
-        for (int y = korkeus - 1; y >= 0; y--) {
-            for (int x = leveys - 1; x >= 0; x--) {
+        for (int y = taulukko.getKorkeus() - 1; y >= 0; y--) {
+            for (int x = taulukko.getLeveys() - 1; x >= 0; x--) {
                 if (taulukko.tarkistaVaakaSumma(y, x, haluttuSumma)) {
                     pisteet++;
                     return true;
@@ -146,16 +130,25 @@ public class TetrisPeli {
         return false;
     }
 
+    /**
+     * Metodi muuttaa tavoiteltavan summan yhtä isommaksi, kun pelaaja saa
+     * tarpeeksi pisteitä. Samalla pistelasku aloitetaan alusta.
+     *
+     */
     public void nostaVaikeustasoa() {
-        if (this.pisteet == 10) {
-            for (int y = 0; y < korkeus; y++) {
-                for (int x = 0; x < leveys; x++) {
-                    taulukko.getPalikka(y, x).setArvo(0);
-                    this.pisteet = 0;
-                }
-            }
+        if (this.pisteet == 5) {
+            this.pisteet = 0;
             this.haluttuSumma += 1;
         }
+    }
+
+    public boolean peliHavitty() {
+        tarkistaSummat();
+        return !onkoTaulukossaTilaa();
+    }
+
+    public boolean peliVoitettu() {
+        return this.haluttuSumma > 15;
     }
 
 }

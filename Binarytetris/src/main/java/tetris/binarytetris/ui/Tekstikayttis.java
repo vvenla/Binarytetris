@@ -1,4 +1,4 @@
-package tetris.binarytetris.gui;
+package tetris.binarytetris.ui;
 
 import java.util.Scanner;
 import tetris.binarytetris.logic.PalikkaTaulukko;
