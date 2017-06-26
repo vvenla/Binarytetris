@@ -3,6 +3,9 @@ package tetris.binarytetris.ui;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -10,6 +13,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -25,27 +29,11 @@ import tetris.binarytetris.logic.TetrisPeli;
  */
 public class Kayttoliittyma extends Application {
 
-//    private int korkeus;
-//    private int leveys;
-//    private int ruudunkoko;
-//    private int summa;
-//    private TetrisPeli peli;
-//    private PalikkaTaulukko taulu;
-//
-//    public Kayttoliittyma(int korkeus, int leveys, int ruudunkoko, int summa, TetrisPeli peli, PalikkaTaulukko taulu) {
-//        this.korkeus = korkeus;
-//        this.leveys = leveys;
-//        this.ruudunkoko = ruudunkoko;
-//        this.summa = summa;
-//        this.peli = new TetrisPeli(korkeus, leveys, summa);
-//        this.taulu = peli.getTaulukko();
-//    }
     @Override
     public void start(Stage ikkuna) throws Exception {
         int ruudunkoko = 50;
-        int leveys = 5;
+        int leveys = 4;
         int korkeus = 5;
-//        int summa = 5;
 
         // Luodaan aloitusnakyma
         BorderPane alkuasettelu = new BorderPane();
@@ -62,32 +50,34 @@ public class Kayttoliittyma extends Application {
         Label ylaraja = new Label("Max");
         ComboBox ylaArvo = new ComboBox();
 
-        ylaArvo.getItems().addAll(IntStream.range(15, 31).boxed().collect(Collectors.toList()));
+        ylaArvo.getItems().addAll(IntStream.range(10, 31).boxed().collect(Collectors.toList()));
         ylaArvo.getSelectionModel().selectFirst();
 
         Button start = new Button("Start");
 
         aloitusValikko.getChildren().addAll(alaraja, alaArvo, ylaraja, ylaArvo, start);
         aloitusValikko.setAlignment(Pos.CENTER);
+        aloitusValikko.setPadding(new Insets(ruudunkoko / 2));
 
         alkuasettelu.setCenter(aloitusValikko);
 
         Scene aloitusnakyma = new Scene(alkuasettelu);
 
-        
         // Luodaan loppunäkymä
         BorderPane loppuasettelu = new BorderPane();
         loppuasettelu.setPrefSize(leveys * ruudunkoko + ruudunkoko * 2, korkeus * ruudunkoko + ruudunkoko);
-//        VBox tulokset = new VBox();
+        VBox tulokset = new VBox();
         Label lopputeksti = new Label();
-//        Button uusiPeli = new Button("New game");
-
-//        tulokset.getChildren().addAll(lopputeksti);
+        Button uusiPeli = new Button("New game");
+        uusiPeli.setOnAction((event) -> {
+            ikkuna.setScene(aloitusnakyma);
+        });
+        
+        tulokset.getChildren().addAll(lopputeksti);
         loppuasettelu.setCenter(lopputeksti);
 
         Scene lopetusnakyma = new Scene(loppuasettelu);
 
-        
         // Luodaan pelinäkyma
         BorderPane peliasettelu = new BorderPane();
         peliasettelu.setPrefSize(leveys * ruudunkoko + ruudunkoko * 2, korkeus * ruudunkoko + ruudunkoko);
@@ -95,73 +85,80 @@ public class Kayttoliittyma extends Application {
         Scene pelinakyma = new Scene(peliasettelu);
 
         start.setOnAction((event) -> {
-            ikkuna.setScene(pelinakyma);
-        });
 
-        int summa = (int) alaArvo.getValue();
-        TetrisPeli peli = new TetrisPeli(korkeus, leveys, summa);
+            int summa = (int) alaArvo.getValue();
+            int voittoSumma = (int) ylaArvo.getValue();
 
-        VBox sivupalkki = new VBox();
+//        String sum = start.getOnAction().toString();
+//        System.out.println(sum);
+//        int summa = Integer.parseInt(sum);
+            TetrisPeli peli = new TetrisPeli(korkeus, leveys, summa, voittoSumma);
 
-        peli.setUusiArvo();
-        Label palikkaOhje = new Label("Next:");
-        Label seuraavaPalikka = new Label(Integer.toBinaryString((peli.getUusiArvo())));
+            // pelinäkymän sivupalkki
+            VBox sivupalkki = new VBox();
+
+            peli.setUusiArvo();
+            Label seuraavaPalikka = new Label(Integer.toBinaryString((peli.getUusiArvo())));
 //        Label seuraavaPalikka = new Label(String.valueOf(peli.getUusiArvo()));
-        seuraavaPalikka.setPrefSize(ruudunkoko, ruudunkoko);
-        seuraavaPalikka.setAlignment(Pos.CENTER);
-        seuraavaPalikka.setStyle("-fx-border-color: black;");
+            seuraavaPalikka.setPrefSize(ruudunkoko, ruudunkoko);
+            seuraavaPalikka.setStyle("-fx-border-color: black;");
+            seuraavaPalikka.setAlignment(Pos.CENTER);
 
-        Label pisteOhje = new Label("Points:");
-        Label pisteet = new Label("0");
+            Canvas palkki = new Canvas(2 * ruudunkoko, ruudunkoko / 2);
+            GraphicsContext piirturi = palkki.getGraphicsContext2D();
 
-        Canvas palkki = new Canvas(2 * ruudunkoko, ruudunkoko / 2);
-        GraphicsContext piirturi = palkki.getGraphicsContext2D();
+            Label tasoOhje = new Label("Level:");
+            Label vaikeustaso = new Label(String.valueOf(summa));
 
-        Label tasoOhje = new Label("Level:");
-        Label vaikeustaso = new Label(String.valueOf(summa));
+            sivupalkki.getChildren().addAll(seuraavaPalikka, palkki, tasoOhje, vaikeustaso);
+            sivupalkki.setAlignment(Pos.CENTER);
+            sivupalkki.setSpacing(ruudunkoko / 2);
 
-        sivupalkki.getChildren().addAll(palikkaOhje, seuraavaPalikka, pisteOhje, palkki, tasoOhje, vaikeustaso);
+            ikkuna.setScene(pelinakyma);
 
-        HBox ylapalkki = new HBox();
-        for (int i = 0; i < leveys; i++) {
-            int nro = i + 1;
-            Button btnNumber = new Button();
-            btnNumber.setPrefSize(ruudunkoko, ruudunkoko);
-            btnNumber.setText(String.valueOf(nro));
+            HBox ylapalkki = new HBox();
+            for (int i = 0; i < leveys; i++) {
+                int nro = i + 1;
+                Button btnNumber = new Button();
+                btnNumber.setPrefSize(ruudunkoko, ruudunkoko);
+                btnNumber.setText(String.valueOf(nro));
 
-            btnNumber.setOnAction((actionEvent) -> {
                 
+                
+                
+                btnNumber.setOnAction((actionEvent) -> {
 
-                peli.paivita(nro);
-                PalikkaTaulukko taulu = peli.getTaulukko();
-                GridPane taulukko = taulukko(korkeus, leveys, taulu, ruudunkoko);
-                pisteet.setText(String.valueOf(peli.getPisteet()));
-                piirturi.setFill(Color.GREY);
-                piirturi.fillRect(0, 0, ruudunkoko * 2, ruudunkoko / 2);
-                piirturi.setFill(Color.RED);
+                    peli.paivita(nro);
+                    PalikkaTaulukko taulu = peli.getTaulukko();
+                    GridPane taulukko = taulukko(korkeus, leveys, taulu, ruudunkoko);
+                    piirturi.setFill(Color.GREY);
+                    piirturi.fillRect(0, 0, ruudunkoko * 2, ruudunkoko / 2);
+                    piirturi.setFill(Color.RED);
 
-                piirturi.fillRect(0, 0, 0.4 * ruudunkoko * peli.getPisteet(), ruudunkoko / 2);
-                vaikeustaso.setText(String.valueOf(peli.getHaluttuSumma()));
-                peliasettelu.setCenter(taulukko);
-                peli.setUusiArvo();
-                seuraavaPalikka.setText(Integer.toBinaryString((peli.getUusiArvo())));
+                    piirturi.fillRect(0, 0, 0.4 * ruudunkoko * peli.getPisteet(), ruudunkoko / 2);
+                    vaikeustaso.setText(String.valueOf(peli.getHaluttuSumma()));
+                    peliasettelu.setCenter(taulukko);
+                    peli.setUusiArvo();
+                    seuraavaPalikka.setText(Integer.toBinaryString((peli.getUusiArvo())));
 //                seuraavaPalikka.setText(String.valueOf(peli.getUusiArvo()));
-                if (peli.peliVoitettu()) {
-                    lopputeksti.setText("You won!");
-                    ikkuna.setScene(lopetusnakyma);
-                }
-                if (peli.peliHavitty()) {
-                    lopputeksti.setText("Game over");
-                    ikkuna.setScene(lopetusnakyma);
-                }
+                    if (peli.peliVoitettu()) {
+                        lopputeksti.setText("You won!");
+                        ikkuna.setScene(lopetusnakyma);
+                    }
+                    if (peli.peliHavitty()) {
+                        lopputeksti.setText("Game over! Level: " + peli.getHaluttuSumma());
+                        ikkuna.setScene(lopetusnakyma);
+                    }
 
-            });
+                });
 
-            ylapalkki.getChildren().add(btnNumber);
-        }
+                ylapalkki.getChildren().add(btnNumber);
+            }
 
-        peliasettelu.setTop(ylapalkki);
-        peliasettelu.setRight(sivupalkki);
+            peliasettelu.setTop(ylapalkki);
+            peliasettelu.setRight(sivupalkki);
+
+        });
 
         ikkuna.setScene(aloitusnakyma);
         ikkuna.show();
@@ -214,5 +211,8 @@ public class Kayttoliittyma extends Application {
 //            ylapalkki.getChildren().add(btnNumber);
 //        }
 //        return ylapalkki;
+//    }
+
+//    
 //    }
 }

@@ -33,7 +33,7 @@ public class TetrisPeliTest {
 
     @Before
     public void setUp() {
-        this.peli = new TetrisPeli(10, 5, 15);
+        this.peli = new TetrisPeli(10, 5, 5, 15);
     }
 
     @After

@@ -12,12 +12,14 @@ public class TetrisPeli {
     private int uusiArvo;
     private int haluttuSumma;
     private int pisteet;
+    private int voittoSumma;
 
-    public TetrisPeli(int korkeus, int leveys, int haluttuSumma) {
+    public TetrisPeli(int korkeus, int leveys, int haluttuSumma, int voittoSumma) {
         this.taulukko = new PalikkaTaulukko(korkeus, leveys);
         this.uusiArvo = 0;
         this.haluttuSumma = haluttuSumma;
         this.pisteet = 0;
+        this.voittoSumma = voittoSumma;
     }
 
     public PalikkaTaulukko getTaulukko() {
@@ -148,7 +150,7 @@ public class TetrisPeli {
     }
 
     public boolean peliVoitettu() {
-        return this.haluttuSumma > 15;
+        return this.haluttuSumma > voittoSumma;
     }
 
 }

@@ -16,8 +16,8 @@ public class Tekstikayttis {
 //    private final int summa;
     private final int leveys;
 
-    public Tekstikayttis(int korkeus, int leveys, Scanner lukija, int summa) {
-        this.peli = new TetrisPeli(korkeus, leveys, summa);
+    public Tekstikayttis(int korkeus, int leveys, Scanner lukija, int summa, int loppusumma) {
+        this.peli = new TetrisPeli(korkeus, leveys, summa, loppusumma);
         this.taulukko = peli.getTaulukko();
         this.lukija = lukija;
 //        this.summa = summa;
