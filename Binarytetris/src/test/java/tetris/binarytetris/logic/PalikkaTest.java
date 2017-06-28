@@ -1,11 +1,5 @@
 package tetris.binarytetris.logic;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-import tetris.binarytetris.logic.Palikka;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -34,7 +28,7 @@ public class PalikkaTest {
 
     @Before
     public void setUp() {
-        this.palikka = new Palikka();
+        this.palikka = new Palikka(0);
     }
 
     @After

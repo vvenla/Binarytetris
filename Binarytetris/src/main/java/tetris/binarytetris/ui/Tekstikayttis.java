@@ -2,30 +2,44 @@ package tetris.binarytetris.ui;
 
 import java.util.Scanner;
 import tetris.binarytetris.logic.PalikkaTaulukko;
-import tetris.binarytetris.logic.TetrisPeli;
+import tetris.binarytetris.logic.PalikkaPeli;
 
 /**
+ * Tekstikäyttöliittymä testailua varten, ennen graafista käyttöliittymää.
  *
  * @author Venla Viljamaa
  */
 public class Tekstikayttis {
 
-    private final TetrisPeli peli;
+    private final PalikkaPeli peli;
     private final PalikkaTaulukko taulukko;
     private final Scanner lukija;
-//    private final int summa;
     private final int leveys;
 
+    /**
+     * Konstruktori.
+     *
+     * @param korkeus taulukon korkeus
+     * @param leveys taulukon leveys
+     * @param lukija Scanner
+     * @param summa haluttu summa
+     * @param loppusumma voittosumma
+     *
+     */
     public Tekstikayttis(int korkeus, int leveys, Scanner lukija, int summa, int loppusumma) {
-        this.peli = new TetrisPeli(korkeus, leveys, summa, loppusumma);
+        this.peli = new PalikkaPeli(korkeus, leveys, summa, loppusumma);
         this.taulukko = peli.getTaulukko();
         this.lukija = lukija;
 //        this.summa = summa;
         this.leveys = leveys;
     }
 
+    /**
+     * Metodi käynnistää pelin.
+     *
+     */
     public void pelaa() {
-        while (peli.onkoTaulukossaTilaa()) {
+        while (!peli.peliHavitty()) {
             peli.setUusiArvo();
             System.out.println("Seuraava palikka: " + peli.getUusiArvo());
             paivitaPeli();
@@ -33,6 +47,10 @@ public class Tekstikayttis {
         System.out.println("Peli loppui");
     }
 
+    /**
+     * Metodi päivittää peliä.
+     *
+     */
     public void paivitaPeli() {
         System.out.print("Anna sarake: ");
         String komento = lukija.nextLine();
@@ -45,6 +63,10 @@ public class Tekstikayttis {
         tulosta();
     }
 
+    /**
+     * Metodi tulostaa pelitilanteen.
+     *
+     */
     public void tulosta() {
         System.out.println();
         for (int y = 0; y < taulukko.getKorkeus(); y++) {

@@ -23,3 +23,9 @@ Päivä | Tunnit | Kuvaus
 18.06.2017 | 3h | Käyttöliittymää
 20.06.2017 | 3h | Käyttöliittymää
 21.06.2017 | 4h | Käyttöliittymää
+22.06.2017 | 2h | Lisää toiminnallisuuksia
+25.06.2017 | 3h | Sekalaista
+26.06.2017 | 2h | Raportteja, sekalaista
+27.06.2017 | 3h | jar. -tiedostoa
+28.06.2017 | 1h | Testejä
+28.06.2017 | 5h | Viimeistelyä

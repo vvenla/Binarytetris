@@ -1,6 +1,7 @@
 package tetris.binarytetris.logic;
 
 /**
+ * Luokka hoitaa Palikka-olion ominaisuuksia.
  *
  * @author Venla Viljamaa
  */
@@ -8,12 +9,13 @@ public class Palikka {
 
     private int arvo;
 
+    /**
+     * Konstruktori.
+     *
+     * @param arvo palikan arvo
+     */
     public Palikka(int arvo) {
         this.arvo = arvo;
-    }
-
-    public Palikka() {
-        this.arvo = 0;
     }
 
     public int getArvo() {

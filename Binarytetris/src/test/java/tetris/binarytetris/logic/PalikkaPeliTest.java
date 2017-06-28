@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tetris.binarytetris.logic;
 
 import org.junit.After;
@@ -16,11 +11,11 @@ import static org.junit.Assert.*;
  *
  * @author Venla Viljamaa
  */
-public class TetrisPeliTest {
+public class PalikkaPeliTest {
 
-    private TetrisPeli peli;
+    private PalikkaPeli peli;
 
-    public TetrisPeliTest() {
+    public PalikkaPeliTest() {
     }
 
     @BeforeClass
@@ -33,11 +28,16 @@ public class TetrisPeliTest {
 
     @Before
     public void setUp() {
-        this.peli = new TetrisPeli(10, 5, 5, 15);
+        this.peli = new PalikkaPeli(10, 5, 15, 17);
     }
 
     @After
     public void tearDown() {
+    }
+
+    @Test
+    public void hello() {
+
     }
 
     @Test
@@ -56,17 +56,21 @@ public class TetrisPeliTest {
     }
 
     @Test
+    public void testGetHaluttuSumma() {
+        assertEquals(15, peli.getHaluttuSumma());
+    }
+
+    @Test
+    public void testGetVaikeustaso() {
+        peli.setVaikeustaso(7);
+        assertEquals(7, peli.getVaikeustaso());
+    }
+
+    @Test
     public void testUudenArvonArpominen() {
         peli.setUusiArvo();
         assertTrue(peli.getUusiArvo() < 8);
         assertTrue(peli.getUusiArvo() > 0);
-    }
-
-    @Test
-    public void testPaivita() {
-        peli.setUusiArvo();
-        peli.paivita(3);
-        assertNotEquals(0, peli.getTaulukko().getPalikka(9, 2).getArvo());
     }
 
     @Test
@@ -76,21 +80,22 @@ public class TetrisPeliTest {
         assertNotEquals(0, peli.getTaulukko().getPalikka(9, 4).getArvo());
     }
 
-//    @Test
-//    public void testLiikuAlasKaanteinen() {
-//        peli.getTaulukko().setPalikka(5, 8, 4);
-//        peli.liikuAlas();
-//        assertNotEquals(0, peli.getTaulukko().getPalikka(9, 4).getArvo());
-//    }
     @Test
-    public void testOnkoTaulukossaTilaa() {
-        assertTrue(peli.onkoTaulukossaTilaa());
+    public void testPeliHavitty() {
+        assertFalse(peli.peliHavitty());
         for (int y = 0; y < 10; y++) {
             for (int x = 0; x < 5; x++) {
                 peli.getTaulukko().setPalikka(2, y, x);
             }
         }
-        assertFalse(peli.onkoTaulukossaTilaa());
+        assertTrue(peli.peliHavitty());
+    }
+
+    @Test
+    public void testOnkoTaulukossaTilaa2() {
+        assertFalse(peli.peliHavitty());
+        peli.getTaulukko().setPalikka(5, 0, 0);
+        assertTrue(peli.peliHavitty());
     }
 
     @Test
@@ -98,15 +103,43 @@ public class TetrisPeliTest {
         peli.getTaulukko().setPalikka(5, 9, 0);
         peli.getTaulukko().setPalikka(5, 8, 0);
         peli.getTaulukko().setPalikka(5, 7, 0);
-//        peli.getTaulukko().setPalikka(5, 9, 2);
-//        peli.getTaulukko().setPalikka(5, 9, 3);
-//        peli.getTaulukko().setPalikka(5, 9, 4);
         peli.tarkistaSummat();
         assertTrue(true);
         for (int y = 0; y < 10; y++) {
             for (int x = 0; x < 5; x++) {
                 assertEquals(0, peli.getTaulukko().getPalikka(y, x).getArvo());
             }
+        }
+    }
+
+    @Test
+    public void testPaivita() {
+        peli.setVaikeustaso(1);
+        peli.setUusiArvo();
+        peli.paivita(3);
+        assertNotEquals(0, peli.getTaulukko().getPalikka(9, 2).getArvo());
+    }
+
+    @Test
+    public void testPaivita2() {
+        peli.setVaikeustaso(5);
+        peli.setUusiArvo();
+        peli.getTaulukko().setPalikka(5, 8, 0);
+        peli.getTaulukko().setPalikka(5, 7, 0);
+        peli.getTaulukko().setPalikka(5, 6, 0);
+        peli.paivita(5);
+        peli.getTaulukko().setPalikka(4, 9, 0);
+        peli.getTaulukko().setPalikka(5, 9, 1);
+        peli.getTaulukko().setPalikka(5, 9, 2);
+        peli.getTaulukko().setPalikka(1, 9, 3);
+//        peli.tulosta();
+        for (int y = 0; y < 9; y++) {
+            for (int x = 0; x < 5; x++) {
+                assertEquals(0, peli.getTaulukko().getPalikka(y, x).getArvo());
+            }
+        }
+        for (int x = 0; x < 5; x++) {
+            assertNotEquals(0, peli.getTaulukko().getPalikka(9, x).getArvo());
         }
     }
 

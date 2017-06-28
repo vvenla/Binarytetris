@@ -1,0 +1,5 @@
+tetris\binarytetris\logic\PalikkaPeli.class
+tetris\binarytetris\logic\Palikka.class
+tetris\binarytetris\ui\Kayttoliittyma.class
+tetris\binarytetris\logic\PalikkaTaulukko.class
+tetris\binarytetris\ui\Tekstikayttis.class

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="6.11.2">
+<file name="C:\Users\Venla Viljamaa\Documents\GitHub\javalabra\Binarytetris\Binarytetris\src\main\java\tetris\binarytetris\logic\Palikka.java">
+</file>
+<file name="C:\Users\Venla Viljamaa\Documents\GitHub\javalabra\Binarytetris\Binarytetris\src\main\java\tetris\binarytetris\logic\PalikkaPeli.java">
+</file>
+<file name="C:\Users\Venla Viljamaa\Documents\GitHub\javalabra\Binarytetris\Binarytetris\src\main\java\tetris\binarytetris\logic\PalikkaTaulukko.java">
+</file>
+<file name="C:\Users\Venla Viljamaa\Documents\GitHub\javalabra\Binarytetris\Binarytetris\src\main\java\tetris\binarytetris\ui\Kayttoliittyma.java">
+<error line="1" severity="error" message="File length is 221 lines (max allowed is 200)." source="com.puppycrawl.tools.checkstyle.checks.sizes.FileLengthCheck"/>
+</file>
+<file name="C:\Users\Venla Viljamaa\Documents\GitHub\javalabra\Binarytetris\Binarytetris\src\main\java\tetris\binarytetris\ui\Tekstikayttis.java">
+</file>
+</checkstyle>

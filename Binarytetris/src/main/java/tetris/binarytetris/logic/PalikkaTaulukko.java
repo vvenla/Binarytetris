@@ -1,6 +1,7 @@
 package tetris.binarytetris.logic;
 
 /**
+ * Luokka huolehtii taulukon ominaisuuksistsa.
  *
  * @author Venla Viljamaa
  */
@@ -8,6 +9,13 @@ public class PalikkaTaulukko {
 
     private final Palikka[][] taulukko;
 
+    /**
+     * Konstruktori.
+     *
+     * @param korkeus taulukon korkeus
+     * @param leveys taulukon leveys
+     *
+     */
     public PalikkaTaulukko(int korkeus, int leveys) {
         this.taulukko = new Palikka[korkeus][leveys];
         for (int y = 0; y < korkeus; y++) {
@@ -120,4 +128,5 @@ public class PalikkaTaulukko {
         }
         return false;
     }
+
 }
