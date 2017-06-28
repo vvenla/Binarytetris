@@ -101,17 +101,14 @@ public class PalikkaPeli {
      * @return true jos joku taulukon alkioista liikkuu alas, muuten false.
      */
     public boolean liikuAlas() {
-//        boolean liikkuuko = false;
         for (int y = 0; y < taulukko.getKorkeus(); y++) {
             for (int x = 0; x < taulukko.getLeveys(); x++) {
                 if (taulukko.siirraAlas(y, x)) {
                     return true;
-//                    liikkuuko = true;
                 }
             }
         }
         return false;
-//        return liikkuuko;
     }
 
     /**

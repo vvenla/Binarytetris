@@ -77,7 +77,15 @@ public class PalikkaPeliTest {
     public void testLiikuAlas() {
         peli.getTaulukko().setPalikka(5, 0, 4);
         peli.liikuAlas();
-        assertNotEquals(0, peli.getTaulukko().getPalikka(9, 4).getArvo());
+        assertNotEquals(5, peli.getTaulukko().getPalikka(0, 4).getArvo());
+        assertTrue(peli.liikuAlas());
+    }
+    
+    @Test
+    public void testLiikuAlas2() {
+        peli.getTaulukko().setPalikka(5, 9, 4);
+        peli.liikuAlas();
+        assertFalse(peli.liikuAlas());
     }
 
     @Test

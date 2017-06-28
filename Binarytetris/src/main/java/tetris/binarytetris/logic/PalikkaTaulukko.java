@@ -1,7 +1,7 @@
 package tetris.binarytetris.logic;
 
 /**
- * Luokka huolehtii taulukon ominaisuuksistsa.
+ * Luokka huolehtii taulukon ominaisuuksista.
  *
  * @author Venla Viljamaa
  */

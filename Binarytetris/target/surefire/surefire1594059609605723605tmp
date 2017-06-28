@@ -1,8 +1,0 @@
-#surefire
-#Wed Jun 28 19:04:56 EEST 2017
-maven.ext.class.path=C\:\\Program Files\\NetBeans 8.2\\java\\maven-nblib\\netbeans-eventspy.jar
-user.dir=C\:\\Users\\Venla Viljamaa\\Documents\\GitHub\\javalabra\\Binarytetris\\Binarytetris
-file.encoding=UTF-8
-localRepository=C\:\\Users\\Venla Viljamaa\\.m2\\repository
-basedir=C\:\\Users\\Venla Viljamaa\\Documents\\GitHub\\javalabra\\Binarytetris\\Binarytetris
-test=tetris.binarytetris.logic.PalikkaPeliTest

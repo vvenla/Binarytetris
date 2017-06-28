@@ -39,7 +39,10 @@ joku palikoista j‰‰ koskemaan yl‰reunaa.
 
 ----
 
+#### Luokkakaavio:
 ![](BinarypelinKaavio.jpg)
+#### Sekvenssikaavio nro.1
 ![](Sekvenssikaavio.jpg)
+#### Sekvenssikaavio nro.2
 ![](Sekvenssikaavio2.jpg)
  
