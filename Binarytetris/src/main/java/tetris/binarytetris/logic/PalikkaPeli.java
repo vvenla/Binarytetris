@@ -66,30 +66,45 @@ public class PalikkaPeli {
     }
 
     /**
-     * Metodi asettaa uuden palikan valittuun sarakkeeseen. Niin kauan kuin
-     * palikat pääsevät putoamaan alaspäin tarkistetaan muodostuuko palikoista
-     * summaa, ja onko pisteitä tarpeeksi vaikeustason nostoon.
+     * Metodi asettaa uuden palikan valittuun sarakkeeseen ja päivittää peliä
+     * niin monta kierrosta kuin on tarve päivittää.
      *
      * @param sarake Määrittelee, monenteenko sarakkeeseen uusi arvo asetetaan.
-     *
-     * @see tetris.binarytetris.logic.PalikkaPeli#liikuAlas()
-     * @see tetris.binarytetris.logic.PalikkaPeli#tarkistaSummat()
-     * @see tetris.binarytetris.logic.PalikkaPeli#nostaVaikeustasoa()
      */
     public void paivita(int sarake) {
         if (taulukko.getPalikka(0, sarake - 1).getArvo() == 0) {
             taulukko.setPalikka(uusiArvo, 0, sarake - 1);
         }
         while (true) {
-            tarkistaSummat();
-            while (nostaVaikeustasoa()) {
-                tarkistaSummat();
+            if (paivityskierros() == false) {
+                break;
             }
+        }
+//        System.out.println(this.haluttuSumma);
+    }
+
+    /**
+     * Metodi käy yhden päivityskierroksen: Pudottaa palikan alas, tarksitaa
+     * tuleeko haluttua summaa, ja onko pisteitä tarpeeksi vaikeustason nostoon.
+     *
+     * @see tetris.binarytetris.logic.PalikkaPeli#liikuAlas()
+     * @see tetris.binarytetris.logic.PalikkaPeli#tarkistaSummat()
+     * @see tetris.binarytetris.logic.PalikkaPeli#nostaVaikeustasoa()
+     *
+     * @return true jos on päivitettävää, muuten false.
+     */
+    public boolean paivityskierros() {
+        while (true) {
             if (liikuAlas() == false) {
                 break;
             }
         }
-        
+        while (tarkistaSummat()) {
+            nostaVaikeustasoa();
+
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -127,15 +142,13 @@ public class PalikkaPeli {
             for (int x = taulukko.getLeveys() - 1; x >= 0; x--) {
                 if (taulukko.tarkistaVaakaSumma(y, x, haluttuSumma)) {
                     pisteet++;
-//                    nostaVaikeustasoa();
                     return true;
                 }
                 if (taulukko.tarkistaPystySumma(y, x, haluttuSumma)) {
-//                    nostaVaikeustasoa();
                     pisteet++;
                     return true;
                 }
-                
+
             }
         }
         return false;
@@ -157,15 +170,14 @@ public class PalikkaPeli {
     }
 
     /**
-     * Metodi tarkistaa ensin, onko taulukossa summia, sitten osuuko joku 
+     * Metodi tarkistaa ensin, onko taulukossa summia, sitten osuuko joku
      * palikka taulukon yläreunaan.
      *
      * @see tetris.binarytetris.logic.PalikkaPeli#tarkistaSummat()
-     * 
+     *
      * @return true jos osuu, muuten false.
      */
     public boolean peliHavitty() {
-        tarkistaSummat();
         for (int x = 0; x < taulukko.getLeveys(); x++) {
             if (taulukko.getPalikka(0, x).getArvo() != 0) {
                 return true;
@@ -173,25 +185,14 @@ public class PalikkaPeli {
         }
         return false;
     }
-    
+
     /**
      * Metodi tarkistaa onko voittosumma saavutettu.
-     * 
+     *
      * @return true jos on saavutettu, muuten false.
      */
     public boolean peliVoitettu() {
         return this.haluttuSumma > voittoSumma;
     }
-
-//    public void tulosta() {
-//        System.out.println();
-//        for (int y = 0; y < taulukko.getKorkeus(); y++) {
-//            for (int x = 0; x < taulukko.getLeveys(); x++) {
-//                System.out.print(taulukko.getPalikka(y, x).getArvo() + " ");
-//            }
-//            System.out.println();
-//        }
-//        System.out.println();
-//    }
 
 }

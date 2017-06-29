@@ -29,3 +29,4 @@ Päivä | Tunnit | Kuvaus
 27.06.2017 | 3h | jar. -tiedostoa
 28.06.2017 | 1h | Testejä
 28.06.2017 | 5h | Viimeistelyä
+29.06.2017 | 3h | Bugin korjausta, viimeistely

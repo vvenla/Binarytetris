@@ -140,7 +140,7 @@ public class PalikkaPeliTest {
         peli.getTaulukko().setPalikka(5, 9, 1);
         peli.getTaulukko().setPalikka(5, 9, 2);
         peli.getTaulukko().setPalikka(1, 9, 3);
-//        peli.tulosta();
+
         for (int y = 0; y < 9; y++) {
             for (int x = 0; x < 5; x++) {
                 assertEquals(0, peli.getTaulukko().getPalikka(y, x).getArvo());
@@ -149,6 +149,35 @@ public class PalikkaPeliTest {
         for (int x = 0; x < 5; x++) {
             assertNotEquals(0, peli.getTaulukko().getPalikka(9, x).getArvo());
         }
+    }
+    
+    @Test
+    public void testPaivita3() {
+        peli.setVaikeustaso(3);
+        peli.getTaulukko().setPalikka(4, 9, 0);
+        peli.getTaulukko().setPalikka(5, 8, 0);
+        peli.getTaulukko().setPalikka(7, 7, 0);
+        peli.getTaulukko().setPalikka(8, 4, 1);
+
+        peli.paivita(3);
+        assertEquals(7, peli.getTaulukko().getPalikka(7, 0).getArvo());
+        assertEquals(8, peli.getTaulukko().getPalikka(9, 1).getArvo());
+    }
+    
+    @Test
+    public void testNostaVaikeustasoa() {
+        peli.setVaikeustaso(1);
+        peli.setUusiArvo();
+        peli.getTaulukko().setPalikka(6, 8, 0);
+        peli.getTaulukko().setPalikka(5, 7, 0);
+        peli.getTaulukko().setPalikka(5, 6, 0);
+        
+        peli.getTaulukko().setPalikka(4, 9, 0);
+        peli.getTaulukko().setPalikka(5, 9, 1);
+        peli.getTaulukko().setPalikka(5, 9, 2);
+        peli.getTaulukko().setPalikka(5, 9, 3);
+        peli.paivita(5);
+        assertEquals(17, peli.getHaluttuSumma());
     }
 
 }
