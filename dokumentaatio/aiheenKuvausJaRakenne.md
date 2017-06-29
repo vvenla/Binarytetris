@@ -1,6 +1,7 @@
-**Aihe:** Binarytetris. Toteutetaan peli, jossa palikat ovat pieni‰ bin‰‰rinumeroita, joita kasataan 
+**Aihe:** Toteutetaan peli, jossa palikat ovat pieni‰ bin‰‰rinumeroita, joita kasataan 
 pinoihin tavoitteena saada p‰‰llek‰isiin tai vierekk‰isiin palikoihin tietty summa, jolloin palikat 
-katoavat. Pelin tarkoituksena on oppia hahmottamaan ja laskemaan yhteen pieni‰ bin‰‰rilukuja.
+katoavat. Pelin tarkoituksena on oppia hahmottamaan ja laskemaan yhteen pieni‰ bin‰‰rilukuja. Peli on suunnattu 
+esimerkiksi yl‰asteik‰isille hauskaksi tavaksi opetella bin‰‰rilukuja.
 
 #### Rakenne:
 Peliss‰ on nelj‰ luokkaa: Palikka, PalikkaTaulukko, PalikkaPeli ja Kayttˆliittyma. Pelaajalle n‰kyy 
